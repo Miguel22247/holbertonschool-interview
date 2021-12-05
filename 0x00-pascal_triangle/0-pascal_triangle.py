@@ -18,4 +18,3 @@ def pascal_triangle(n):
                 temp_list.append(pascal_tri_list[i-1][j-1] + pascal_tri_list[i-1][j])
         pascal_tri_list.append(temp_list)
     return pascal_tri_list
- 
