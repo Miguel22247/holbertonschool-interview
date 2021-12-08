@@ -29,5 +29,3 @@ def canUnlockAll(boxes):
         # Change keys for the new keys to check
         keys = new_k
     return False
-
-
