@@ -25,4 +25,4 @@ def minOperations(n):
         else:
             Htotal += Previoush
             numofops += Paste
-    return numberOfOperationsaste
+    return numofops
