@@ -3,7 +3,9 @@
 
 
 def minOperations(n):
-  """given a number n, this method calculates the fewest name of operations"""
+  """
+  given a number n, this method calculates the fewest name of operations
+  """
 
   copyPaste = 2
   Paste = 1
