@@ -1,15 +1,53 @@
 #!/usr/bin/python3
+"""
+Python script takes URL from stdin and compute exact metrics
+"""
 import sys
-from time import sleep
-import datetime
-import random
+import re
 
-for i in range(10000):
-    sleep(random.random())
-        sys.stdout.write("{:d}.{:d}.{:d}.{:d} - [{}] \"GET /projects/260 HTTP/1.1\" {} {}\n".format(
-        random.randint(1, 255), random.randint(1, 255), random.randint(1, 255), random.randint(1, 255),
-        datetime.datetime.now(),
-        random.choice([200, 301, 400, 401, 403, 404, 405, 500]),
-        random.randint(1, 1024)
-    ))
-    sys.stdout.flush()
+
+def print_log_parsing(CODES, file_size):
+    """
+    function that print parsing logs
+    """
+    print("File size: {}".format(file_size))
+    for key, value in sorted(CODES.items()):
+        print("{}: {}".format(key, value))
+
+
+def run():
+    """"
+    function that search the status code and size number
+    """
+    PATTERN = '([\\d]{3})\\s([\\d]{1,4})$'
+    CODES = {}
+    STOP = 10
+    step = 1
+    size = 0
+
+    while True:
+        try:
+            line = input()
+
+            status, file_size = re.search(PATTERN, line).group().split()
+
+            size += int(file_size)
+
+            try:
+                if CODES[status]:
+                    CODES[status] += 1
+            except KeyError:
+                CODES[status] = 1
+
+            if step == STOP:
+                print_log_parsing(CODES, size)
+                step = 1
+
+            step += 1
+        except (KeyboardInterrupt, EOFError):
+            print_log_parsing(CODES, size)
+            exit()
+
+
+if __name__ == '__main__':
+    run()ush()
