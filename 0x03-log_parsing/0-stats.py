@@ -2,13 +2,16 @@
 """
 Python script takes URL from stdin and compute exact metrics
 """
-import sys
 import re
+import sys
 
 
 def print_log_parsing(CODES, file_size):
     """
     function that print parsing logs
+    args:
+        codes: is a dictionary of status code
+        file_size: is the size of status
     """
     print("File size: {}".format(file_size))
     for key, value in sorted(CODES.items()):
@@ -26,6 +29,7 @@ def run():
     size = 0
 
     while True:
+
         try:
             line = input()
 
@@ -50,4 +54,4 @@ def run():
 
 
 if __name__ == '__main__':
-    run()ush()
+    run()
