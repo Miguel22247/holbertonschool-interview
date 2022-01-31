@@ -3,3 +3,4 @@
 
 def makeChange(coins, total):
     """determine the fewest number of coins"""
+     if total 
