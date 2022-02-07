@@ -4,7 +4,7 @@
 
 def makeChange(coins, total):
     """determine the fewest number of coins"""
-     if total <= 0:
+    if total <= 0:
         return 0
 
     coins.sort(reverse=True)
@@ -16,7 +16,7 @@ def makeChange(coins, total):
     while(i < len_coins and cpy_total > 0):
         if (cpy_total - coins[i]) >= 0:
             cpy_total -= coins[i]
-            number_coins +=1
+            number_coins += 1
         else:
             i += 1
 
